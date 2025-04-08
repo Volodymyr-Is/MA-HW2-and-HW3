@@ -34,7 +34,6 @@ import com.example.myapp4.presentation.navigation.Directions
 import com.example.myapp4.presentation.screens.NoteDetailScreen
 
 class MainActivity : ComponentActivity() {
-
     private val viewModel by viewModels<MainActivityViewModel> {
         MainActivityViewModelFactory(application)
     }

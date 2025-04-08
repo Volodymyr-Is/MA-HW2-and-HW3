@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapp4.presentation.LocalNavController
-import com.example.myapp4.presentation.navigation.Directions
 import com.example.myapp4.presentation.viewModels.MainActivityViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -40,6 +39,7 @@ fun NoteDetailScreen(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
         ) {
+            Spacer(modifier = Modifier.height(10.dp))
             Text(text = "Note Details")
             Spacer(modifier = Modifier.height(5.dp))
             Text(text = "Title: ${note.title}")
@@ -47,7 +47,7 @@ fun NoteDetailScreen(
             Text(text = "Text: ${note.text}")
             Spacer(modifier = Modifier.height(5.dp))
             Text(text = "Date added: ${formatter.format(Date(note.timeStamp))}")
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(30.dp))
             Button(onClick = {
                 val route = "add_note/${note.id}"
                 Log.d("NoteDetailScreen", "Navigating to: $route")
