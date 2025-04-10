@@ -9,6 +9,5 @@ sealed class Directions(val route: String) {
 
     companion object {
         const val NOTE_DETAIL_ROUTE = "note_detail/{noteId}"
-        const val ADD_NOTE_ROUTE = "add_note/{noteId}"
     }
 }

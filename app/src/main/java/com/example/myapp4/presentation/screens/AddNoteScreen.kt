@@ -34,6 +34,7 @@ fun AddNoteScreen(
     ) {
         var noteTitleInput by remember { mutableStateOf(existingNote?.title ?: "") }
         var noteTextInput by remember { mutableStateOf(existingNote?.text ?: "") }
+        var isSaving by remember { mutableStateOf(false) }
         val navController = LocalNavController.current
 
         Text(text = if (existingNote != null) "Edit Note" else "Add Note")
@@ -51,12 +52,17 @@ fun AddNoteScreen(
         )
         Spacer(modifier = Modifier.height(5.dp))
         Button(onClick = {
+            isSaving = true
+
+            val noteTitle = if(noteTitleInput.isNullOrBlank()) "Note Title" else noteTitleInput
+            val noteText = if(noteTextInput.isNullOrBlank()) "Note Text" else noteTextInput
+
             val note = existingNote?.copy(
-                title = noteTitleInput,
-                text = noteTextInput
+                title = noteTitle,
+                text = noteText
             ) ?: Note(
-                title = noteTitleInput,
-                text = noteTextInput
+                title = noteTitle,
+                text = noteText
             )
             if (existingNote != null) {
                 viewModel.updateNote(note)
@@ -64,7 +70,9 @@ fun AddNoteScreen(
                 viewModel.addNote(note)
             }
             navController.navigateUp()
-        }) {
+        },
+            enabled = !isSaving
+        ) {
             Text("Save")
         }
     }

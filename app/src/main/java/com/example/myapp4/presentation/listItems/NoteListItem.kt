@@ -33,11 +33,9 @@ fun NoteListItem(
             .pointerInput(Unit) {
                 detectTapGestures(
                     onTap = {
-                        android.util.Log.d("NoteListItem", "Note tapped with ID: ${note.id}")
                         onClick()
                     },
                     onLongPress = {
-                        android.util.Log.d("NoteListItem", "Note long pressed with ID: ${note.id}")
                         onLongPress()
                     }
                 )

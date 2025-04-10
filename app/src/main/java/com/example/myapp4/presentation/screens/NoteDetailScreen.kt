@@ -1,6 +1,5 @@
 package com.example.myapp4.presentation.screens
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,7 +22,6 @@ fun NoteDetailScreen(
     noteId: Int,
     viewModel: MainActivityViewModel = viewModel()
 ) {
-    Log.d("NoteDetailScreen", "Opened with noteId: $noteId")
     val notes = viewModel.notes.collectAsState()
     val note = notes.value.find { it.id == noteId }
     val navController = LocalNavController.current
@@ -50,7 +48,6 @@ fun NoteDetailScreen(
             Spacer(modifier = Modifier.height(30.dp))
             Button(onClick = {
                 val route = "add_note/${note.id}"
-                Log.d("NoteDetailScreen", "Navigating to: $route")
                 navController.navigate(route)
             }) {
                 Text("Edit")

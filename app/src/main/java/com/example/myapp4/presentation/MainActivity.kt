@@ -2,7 +2,6 @@ package com.example.myapp4.presentation
 
 import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -79,7 +78,6 @@ class MainActivity : ComponentActivity() {
                                 arguments = listOf(navArgument("noteId") { type = androidx.navigation.NavType.IntType })
                             ) { backStackEntry ->
                                 val noteId = backStackEntry.arguments?.getInt("noteId") ?: 0
-                                android.util.Log.d("MainActivity", "Navigated to NoteDetailScreen with noteId: $noteId")
                                 NoteDetailScreen(noteId = noteId, viewModel = viewModel)
                             }
                             composable(
@@ -87,7 +85,6 @@ class MainActivity : ComponentActivity() {
                                 arguments = listOf(navArgument("noteId") { type = androidx.navigation.NavType.IntType })
                             ) { backStackEntry ->
                                 val noteId = backStackEntry.arguments?.getInt("noteId")
-                                Log.d("MainActivity", "Navigated to AddNoteScreen with noteId: $noteId")
                                 AddNoteScreen(noteId = noteId, viewModel = viewModel)
                             }
                         }

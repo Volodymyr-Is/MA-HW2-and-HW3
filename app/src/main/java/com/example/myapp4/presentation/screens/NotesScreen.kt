@@ -32,7 +32,6 @@ fun NotesScreen(
             NoteListItem(
                 note = note,
                 onClick = {
-                    android.util.Log.d("NotesScreen", "Clicked on note with ID: ${note.id}, navigating to: ${Directions.NoteDetail(note.id).route}")
                     navController.navigate(Directions.NoteDetail(note.id).route)
                 },
                 onLongPress = {
