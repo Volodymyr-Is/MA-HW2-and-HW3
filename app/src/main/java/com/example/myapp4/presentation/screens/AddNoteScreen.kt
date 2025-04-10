@@ -54,8 +54,8 @@ fun AddNoteScreen(
         Button(onClick = {
             isSaving = true
 
-            val noteTitle = if(noteTitleInput.isNullOrBlank()) "Note Title" else noteTitleInput
-            val noteText = if(noteTextInput.isNullOrBlank()) "Note Text" else noteTextInput
+            val noteTitle = if(noteTitleInput.isNullOrEmpty()) "Note Title" else noteTitleInput
+            val noteText = if(noteTextInput.isNullOrEmpty()) "Note Text" else noteTextInput
 
             val note = existingNote?.copy(
                 title = noteTitle,
