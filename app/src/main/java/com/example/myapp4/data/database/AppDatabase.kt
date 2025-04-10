@@ -6,7 +6,7 @@ import com.example.myapp4.data.dao.NotesDao
 import com.example.myapp4.data.entities.Note
 
 @Database(
-    entities = [Note::class], version = 4
+    entities = [Note::class], version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun notesDao(): NotesDao
