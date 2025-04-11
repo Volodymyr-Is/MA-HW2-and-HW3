@@ -16,9 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import com.example.myapp4.data.formater.TimeFormater
 
 @Composable
 fun NoteListItem(
@@ -26,7 +24,7 @@ fun NoteListItem(
     onClick: () -> Unit = {},
     onLongPress: () -> Unit = {}
 ) {
-    val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+    val timeFormater = TimeFormater()
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -59,7 +57,7 @@ fun NoteListItem(
                 overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.height(5.dp))
-            Text(text = "Date added: ${formatter.format(Date(note.timeStamp))}")
+            Text(text = "Date added: ${timeFormater.formatToDate(note.timeStamp)}")
         }
     }
 }

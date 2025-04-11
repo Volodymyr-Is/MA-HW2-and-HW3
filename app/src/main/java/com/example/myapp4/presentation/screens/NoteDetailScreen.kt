@@ -11,11 +11,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.myapp4.data.formater.TimeFormater
 import com.example.myapp4.presentation.LocalNavController
 import com.example.myapp4.presentation.viewModels.MainActivityViewModel
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 @Composable
 fun NoteDetailScreen(
@@ -32,7 +30,7 @@ fun NoteDetailScreen(
     }
 
     if (note != null) {
-        val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+        val timeFormater = TimeFormater()
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
@@ -44,7 +42,7 @@ fun NoteDetailScreen(
             Spacer(modifier = Modifier.height(5.dp))
             Text(text = "Text: ${note.text}")
             Spacer(modifier = Modifier.height(5.dp))
-            Text(text = "Date added: ${formatter.format(Date(note.timeStamp))}")
+            Text(text = "Date added: ${timeFormater.formatToDate(note.timeStamp)}")
             Spacer(modifier = Modifier.height(30.dp))
             Button(onClick = {
                 val route = "add_note/${note.id}"
